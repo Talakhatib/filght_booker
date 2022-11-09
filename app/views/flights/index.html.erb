@@ -1,0 +1,44 @@
+<h1>Search for A Flight:</h1>
+
+<%= form_tag flights_path, :method =>"get" do %>
+   <h3> Departure Airport</h3>
+   <select name="departure">
+      <%= @airports.each do |departure| %>
+        <option value="<%= departure.id %>"><%= departure.code %></option>
+      <% end %>
+   </select>
+   <h3> Arrival Airport</h3>
+   <select name="arrival">
+      <%= @airports.each do |arrival| %>
+        <option value="<%= arrival.id %>"><%= arrival.code %></option>
+      <% end %>
+   </select>
+   <h3>Number of Passengers</h3>
+     <select name="passengers">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">2</option>
+       <option value="4">4</option>
+     </select>
+    <h3>Flights Date</h3>
+     <select name="date_flight">
+       <%= @flights.each do |flight| %>
+         <option value="<%= flight.start_time %>"><%= flight.start_time %></option>
+       <% end %>
+     </select>
+     <br><br>
+   <%= submit_tag("Search",:name => nil) %>
+<% end %>
+<% if @existing_flights %>
+<h2>Result Of The Searched Criteria:</h2>
+<ol>
+  <% @existing_flights.each do |flight| %>
+  <li> 
+      Departure Airport: <%= flight.departure.code %><br>
+      Arrival Airport: <%= flight.arrival.code %><br>
+      Date Of Flight: <%= flight.start_time %><br>
+      Duration: <%= flight.duration %><br>
+  </li>
+  <% end %>
+</ol>
+<% end %>
