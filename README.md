@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app searching for a flight(departure and arrival airport, start time and duration), after selecting the flight you need to booking
 
-Things you may want to cover:
+(flight that you select will be taken into flight information and you need to enter your information as a passenger informtaion). If the booking 
 
-* Ruby version
+is done well the ticket will be verified.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
