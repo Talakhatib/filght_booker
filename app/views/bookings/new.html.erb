@@ -1,0 +1,22 @@
+<h1>Booking Information</h1>
+
+<h3>Flight Choosen:</h3>
+ <p>
+ - Departure Airport: <%= @flight.departure.code %><br>
+ - Arrival Airport: <%= @flight.arrival.code %><br>
+ - The Date of the Flight : <%= @flight.start_time %><br>
+ - Duration : <%= @flight.duration %><br>
+ </p>
+<h3>Paasengers:</h3>
+<%= form_with model:[@flight,@booking] ,data: {turbo: false} do |f| %>
+      <%= f.fields_for :passengers do |passenger| %>
+         <h4>Passenger </h4>
+         <%= passenger.label :name %><br>
+         <%= passenger.text_field :name %><br>
+
+         <%= passenger.label :email %><br>
+         <%= passenger.email_field :email %><br>
+      <% end %>
+      <br>
+  <%= f.submit "Submit" %>
+<% end %>

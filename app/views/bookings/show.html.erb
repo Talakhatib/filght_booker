@@ -1,0 +1,21 @@
+<h2><%= link_to "Go to the index page", root_path  %></h2>
+<% @booking.passengers.each do |passenger| %>
+<h1>Ticket</h1>
+
+<h3>Flight Information:</h3>
+<ul>
+  <li> Departure Airport: <%= @booking.flight.departure.code %></li>
+  <li> Arrival Airport: <%= @booking.flight.arrival.code %></li>
+  <li> Time Of Flight: <%= @booking.flight.start_time %></li>
+  <li> Duration: <%= @booking.flight.duration %></li>
+</ul>
+
+<h3>Passenger Information:</h3>
+<ul>
+  <li>Name: <%= passenger.name %></li>
+  <li> Email: <%= passenger.email %></li>
+</ul>
+
+<h4>Date of Creation: <%= @booking.created_at %></h4>
+<hr>
+<% end %>

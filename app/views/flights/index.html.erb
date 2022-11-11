@@ -1,3 +1,4 @@
+
 <h1>Search for A Flight:</h1>
 
 <%= form_tag flights_path, :method =>"get" do %>
@@ -15,10 +16,10 @@
    </select>
    <h3>Number of Passengers</h3>
      <select name="passengers">
-       <option value="1">1</option>
-       <option value="2">2</option>
-       <option value="3">2</option>
-       <option value="4">4</option>
+       <option value=1 >1</option>
+       <option value=2 >2</option>
+       <option value=3 >3</option>
+       <option value=4 >4</option>
      </select>
     <h3>Flights Date</h3>
      <select name="date_flight">
@@ -32,13 +33,21 @@
 <% if @existing_flights %>
 <h2>Result Of The Searched Criteria:</h2>
 <ol>
-  <% @existing_flights.each do |flight| %>
-  <li> 
-      Departure Airport: <%= flight.departure.code %><br>
-      Arrival Airport: <%= flight.arrival.code %><br>
-      Date Of Flight: <%= flight.start_time %><br>
-      Duration: <%= flight.duration %><br>
-  </li>
+    <%= form_with url: new_booking_path, :method =>'get' ,data: {turbo: false } do |f|  %>
+     <% @existing_flights.each do |flight| %>
+      <li> 
+          Departure Airport: <%= flight.departure.code %><br>
+          Arrival Airport: <%= flight.arrival.code %><br>
+          Date Of Flight: <%= flight.start_time %><br>
+          Duration: <%= flight.duration %><br>
+          <%= f.radio_button :flight , flight.id ,checked: true %> Choose this flight
+      </li>
+      <br>
+      
+    <% end %>
+    <br>
+    <%= hidden_field_tag :nb_passengers , params[:passengers] %>
+    <%= f.submit "Submit" %>
   <% end %>
 </ol>
 <% end %>
