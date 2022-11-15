@@ -1,3 +1,4 @@
+
 <h1>Booking Information</h1>
 
 <h3>Flight Choosen:</h3>
@@ -9,13 +10,30 @@
  </p>
 <h3>Paasengers:</h3>
 <%= form_with model:[@flight,@booking] ,data: {turbo: false} do |f| %>
+  
+          <ul>
+            <% @booking.errors.each do |error|%>
+               <li style="color:red"><%= error.full_message %></li>
+            <% end %>
+         </ul>
+      
       <%= f.fields_for :passengers do |passenger| %>
          <h4>Passenger </h4>
-         <%= passenger.label :name %><br>
-         <%= passenger.text_field :name %><br>
+         <%= passenger.label :name %>
+         <%= passenger.text_field :name %><br><br>
 
-         <%= passenger.label :email %><br>
-         <%= passenger.email_field :email %><br>
+         <%= passenger.label :email %>
+         <%= passenger.email_field :email %><br><br>
+         
+         <%= passenger.label :phone %>
+         <%= passenger.text_field :phone, placeholder:"00-000-000 or without -" %><br><br>
+
+         <%= passenger.label :date_of_birth %>
+         <%= passenger.date_field :date_of_birth %><br><br>
+
+         <%= passenger.label :address %>
+         <%= passenger.text_field :address %><br><br>
+
       <% end %>
       <br>
   <%= f.submit "Submit" %>

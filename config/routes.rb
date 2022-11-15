@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :flights do 
     resources :bookings, only: [:create]
   end
+   resources :bookings do 
+    resources :passengers , only: [:show]
+   end
 
-   resources :bookings
-  
-  
+
+   default_url_options :host => 'localhost:3000'
 end

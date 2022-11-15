@@ -1,0 +1,21 @@
+<h1>Ticket</h1>
+
+<h3>Flight Information:</h3>
+<ul>
+  <li> Departure Airport: <%= @booking.flight.departure.code %></li>
+  <li> Arrival Airport: <%= @booking.flight.arrival.code %></li>
+  <li> Time Of Flight: <%= @booking.flight.start_time %></li>
+  <li> Duration: <%= @booking.flight.duration %></li>
+</ul>
+
+<h3>Passenger Information:</h3>
+<ul>
+  <li>Name: <%= @passenger.name %></li>
+  <li> Email: <%= @passenger.email %></li>
+  <li> Phone: <%= @passenger.phone %></li>
+  <li> Date of Birth: <%= @passenger.date_of_birth %></li>
+  <li> Address: <%= @passenger.address %></li>
+</ul>
+
+<h4>Date of Creation: <%= @booking.created_at %></h4>
+<hr>

@@ -1,0 +1,9 @@
+<h1> Ticket Information</h1>
+
+<p> Hello <%= @passenger.name.titleize %></p>
+
+<p>
+Your personal information and your choosen flight were successfuly
+booked up . Click on this link to show up your ticket information
+<%= link_to "Ticket", booking_passenger_url(@booking,@passenger) %>
+</p>
